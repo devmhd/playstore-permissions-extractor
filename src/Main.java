@@ -129,7 +129,7 @@ public class Main {
 			
 			PrintWriter writer;
 			try {
-				writer = new PrintWriter("perms_" + category + ".csv", "UTF-8");
+				writer = new PrintWriter("output/perms_" + category + ".csv", "UTF-8");
 				writer.print(mainOutput.toString());
 				writer.close();
 				
