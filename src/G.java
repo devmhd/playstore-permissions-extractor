@@ -10,13 +10,17 @@ public class G {
 	
 	public static HashMap<String, Integer> allPermissionMap;
 	public static ArrayList<String> permStrings;
-	public static HashMap<String, PermRecord> allPermRecordsMap;
+	public static HashMap<String, PermRecord> allPermRecordsMap, malwarePermRecords;
+	
+
 	
 	
 	public static void init() {
 		
 		allPermissionMap = new HashMap<String, Integer>();
 		allPermRecordsMap = new HashMap<String, PermRecord>();
+		
+		malwarePermRecords = new HashMap<String, PermRecord>();
 		
 		permStrings = new ArrayList<String>();
 		
