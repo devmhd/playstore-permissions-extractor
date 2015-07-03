@@ -4,15 +4,22 @@ import java.util.HashMap;
 
 
 public class G {
+	
+	public static final int NO_OF_APP_PER_CATEGORY = 50;
 
 	
 	public static HashMap<String, Integer> allPermissionMap;
+	public static ArrayList<String> permStrings;
+	public static HashMap<String, PermRecord> allPermRecordsMap;
+	
 	
 	public static void init() {
 		
 		allPermissionMap = new HashMap<String, Integer>();
+		allPermRecordsMap = new HashMap<String, PermRecord>();
 		
-		ArrayList<String> permStrings = new ArrayList<String>();
+		permStrings = new ArrayList<String>();
+		
 		
 		permStrings.add("ACCESS_CHECKIN_PROPERTIES");
 		permStrings.add("ACCESS_COARSE_LOCATION");
@@ -23,15 +30,28 @@ public class G {
 		permStrings.add("ACCESS_SURFACE_FLINGER");
 		permStrings.add("ACCESS_WIFI_STATE");
 		permStrings.add("ACCOUNT_MANAGER");
+		permStrings.add("ADD_VOICEMAIL");
 		permStrings.add("AUTHENTICATE_ACCOUNTS");
 		permStrings.add("BATTERY_STATS");
+		permStrings.add("BIND_ACCESSIBILITY_SERVICE");
 		permStrings.add("BIND_APPWIDGET");
+		permStrings.add("BIND_CARRIER_MESSAGING_SERVICE");
 		permStrings.add("BIND_DEVICE_ADMIN");
+		permStrings.add("BIND_DREAM_SERVICE");
 		permStrings.add("BIND_INPUT_METHOD");
+		permStrings.add("BIND_NFC_SERVICE");
+		permStrings.add("BIND_NOTIFICATION_LISTENER_SERVICE");
+		permStrings.add("BIND_PRINT_SERVICE");
 		permStrings.add("BIND_REMOTEVIEWS");
+		permStrings.add("BIND_TEXT_SERVICE");
+		permStrings.add("BIND_TV_INPUT");
+		permStrings.add("BIND_VOICE_INTERACTION");
+		permStrings.add("BIND_VPN_SERVICE");
 		permStrings.add("BIND_WALLPAPER");
 		permStrings.add("BLUETOOTH");
 		permStrings.add("BLUETOOTH_ADMIN");
+		permStrings.add("BLUETOOTH_PRIVILEGED");
+		permStrings.add("BODY_SENSORS");
 		permStrings.add("BRICK");
 		permStrings.add("BROADCAST_PACKAGE_REMOVED");
 		permStrings.add("BROADCAST_SMS");
@@ -40,6 +60,9 @@ public class G {
 		permStrings.add("CALL_PHONE");
 		permStrings.add("CALL_PRIVILEGED");
 		permStrings.add("CAMERA");
+		permStrings.add("CAPTURE_AUDIO_OUTPUT");
+		permStrings.add("CAPTURE_SECURE_VIDEO_OUTPUT");
+		permStrings.add("CAPTURE_VIDEO_OUTPUT");
 		permStrings.add("CHANGE_COMPONENT_ENABLED_STATE");
 		permStrings.add("CHANGE_CONFIGURATION");
 		permStrings.add("CHANGE_NETWORK_STATE");
@@ -61,24 +84,31 @@ public class G {
 		permStrings.add("GET_ACCOUNTS");
 		permStrings.add("GET_PACKAGE_SIZE");
 		permStrings.add("GET_TASKS");
+		permStrings.add("GET_TOP_ACTIVITY_INFO");
 		permStrings.add("GLOBAL_SEARCH");
 		permStrings.add("HARDWARE_TEST");
 		permStrings.add("INJECT_EVENTS");
 		permStrings.add("INSTALL_LOCATION_PROVIDER");
 		permStrings.add("INSTALL_PACKAGES");
+		permStrings.add("INSTALL_SHORTCUT");
 		permStrings.add("INTERNAL_SYSTEM_WINDOW");
 		permStrings.add("INTERNET");
 		permStrings.add("KILL_BACKGROUND_PROCESSES");
+		permStrings.add("LOCATION_HARDWARE");
 		permStrings.add("MANAGE_ACCOUNTS");
 		permStrings.add("MANAGE_APP_TOKENS");
+		permStrings.add("MANAGE_DOCUMENTS");
 		permStrings.add("MASTER_CLEAR");
+		permStrings.add("MEDIA_CONTENT_CONTROL");
 		permStrings.add("MODIFY_AUDIO_SETTINGS");
 		permStrings.add("MODIFY_PHONE_STATE");
 		permStrings.add("MOUNT_FORMAT_FILESYSTEMS");
 		permStrings.add("MOUNT_UNMOUNT_FILESYSTEMS");
 		permStrings.add("NFC");
+		permStrings.add("PERSISTENT_ACTIVITY");
 		permStrings.add("PROCESS_OUTGOING_CALLS");
 		permStrings.add("READ_CALENDAR");
+		permStrings.add("READ_CALL_LOG");
 		permStrings.add("READ_CONTACTS");
 		permStrings.add("READ_EXTERNAL_STORAGE");
 		permStrings.add("READ_FRAME_BUFFER");
@@ -86,9 +116,13 @@ public class G {
 		permStrings.add("READ_INPUT_STATE");
 		permStrings.add("READ_LOGS");
 		permStrings.add("READ_PHONE_STATE");
+		permStrings.add("READ_PROFILE");
 		permStrings.add("READ_SMS");
+		permStrings.add("READ_SOCIAL_STREAM");
 		permStrings.add("READ_SYNC_SETTINGS");
 		permStrings.add("READ_SYNC_STATS");
+		permStrings.add("READ_USER_DICTIONARY");
+		permStrings.add("READ_VOICEMAIL");
 		permStrings.add("REBOOT");
 		permStrings.add("RECEIVE_BOOT_COMPLETED");
 		permStrings.add("RECEIVE_MMS");
@@ -97,6 +131,7 @@ public class G {
 		permStrings.add("RECORD_AUDIO");
 		permStrings.add("REORDER_TASKS");
 		permStrings.add("RESTART_PACKAGES");
+		permStrings.add("SEND_RESPOND_VIA_MESSAGE");
 		permStrings.add("SEND_SMS");
 		permStrings.add("SET_ACTIVITY_WATCHER");
 		permStrings.add("SET_ALARM");
@@ -105,6 +140,7 @@ public class G {
 		permStrings.add("SET_DEBUG_APP");
 		permStrings.add("SET_ORIENTATION");
 		permStrings.add("SET_POINTER_SPEED");
+		permStrings.add("SET_PREFERRED_APPLICATIONS");
 		permStrings.add("SET_PROCESS_LIMIT");
 		permStrings.add("SET_TIME");
 		permStrings.add("SET_TIME_ZONE");
@@ -115,6 +151,8 @@ public class G {
 		permStrings.add("SUBSCRIBED_FEEDS_READ");
 		permStrings.add("SUBSCRIBED_FEEDS_WRITE");
 		permStrings.add("SYSTEM_ALERT_WINDOW");
+		permStrings.add("TRANSMIT_IR");
+		permStrings.add("UNINSTALL_SHORTCUT");
 		permStrings.add("UPDATE_DEVICE_STATS");
 		permStrings.add("USE_CREDENTIALS");
 		permStrings.add("USE_SIP");
@@ -122,33 +160,24 @@ public class G {
 		permStrings.add("WAKE_LOCK");
 		permStrings.add("WRITE_APN_SETTINGS");
 		permStrings.add("WRITE_CALENDAR");
+		permStrings.add("WRITE_CALL_LOG");
 		permStrings.add("WRITE_CONTACTS");
 		permStrings.add("WRITE_EXTERNAL_STORAGE");
 		permStrings.add("WRITE_GSERVICES");
 		permStrings.add("WRITE_HISTORY_BOOKMARKS");
+		permStrings.add("WRITE_PROFILE");
 		permStrings.add("WRITE_SECURE_SETTINGS");
 		permStrings.add("WRITE_SETTINGS");
 		permStrings.add("WRITE_SMS");
-		permStrings.add("WRITE_SYNC_SETTINGS");
-		permStrings.add("BIND_ACCESSIBILITY_SERVICE");
-		permStrings.add("BIND_TEXT_SERVICE");
-		permStrings.add("BIND_VPN_SERVICE");
-		permStrings.add("PERSISTENT_ACTIVITY");
-		permStrings.add("READ_CALL_LOG");
-		permStrings.add("READ_EXTERNAL_STORAGE");
-		permStrings.add("READ_PROFILE");
-		permStrings.add("READ_SOCIAL_STREAM");
-		permStrings.add("READ_USER_DICTIONARY");
-		permStrings.add("ermission");
-		permStrings.add("SET_PREFERRED_APPLICATIONS");
-		permStrings.add("WRITE_CALL_LOG");
-		permStrings.add("WRITE_PROFILE");
 		permStrings.add("WRITE_SOCIAL_STREAM");
+		permStrings.add("WRITE_SYNC_SETTINGS");
 		permStrings.add("WRITE_USER_DICTIONARY");
+		permStrings.add("WRITE_VOICEMAIL");
 		
 		for(int i=0; i< permStrings.size(); ++i){
 			
 			allPermissionMap.put(permStrings.get(i), new Integer(i));
+		
 			
 		}
 		
